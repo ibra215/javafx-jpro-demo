@@ -6,15 +6,17 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>jpro-ipad-demo</artifactId>
+  <artifactId>javafx-jpro-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
+
   <properties>
-    <java.version>17</java.version>
+    <!-- استخدم إصدار JavaFX الذي يناسبك -->
     <javafx.version>23.0.2</javafx.version>
+    <!-- أحدث إصدار مستقر من JPro -->
     <jpro.version>2024.4.1</jpro.version>
   </properties>
 
-  <!-- هذا المستودع لتحميل الـ plugin والـ dependencies الخاصة بـ JPro -->
+  <!-- إضافة مستودع JPro لتحميل البلجنز والتبعيات -->
   <repositories>
     <repository>
       <id>jpro-public</id>
@@ -35,7 +37,13 @@
       <artifactId>javafx-controls</artifactId>
       <version>${javafx.version}</version>
     </dependency>
-    <!-- JPro Web API -->
+    <!-- JPro Client for JavaFX -->
+    <dependency>
+      <groupId>one.jpro</groupId>
+      <artifactId>jpro-client-javafx</artifactId>
+      <version>${jpro.version}</version>
+    </dependency>
+    <!-- JPro Web API (server-side) -->
     <dependency>
       <groupId>one.jpro</groupId>
       <artifactId>jpro-webapi</artifactId>
@@ -45,12 +53,13 @@
 
   <build>
     <plugins>
-      <!-- JPro Maven Plugin -->
+      <!-- JPro Maven Plugin لإطلاق التطبيق في المتصفح -->
       <plugin>
         <groupId>one.jpro</groupId>
         <artifactId>jpro-maven-plugin</artifactId>
         <version>${jpro.version}</version>
         <configuration>
+          <!-- غيّر هذا إلى الـ main class الخاص بك -->
           <mainClass>com.example.Main</mainClass>
         </configuration>
       </plugin>
